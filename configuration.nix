@@ -24,9 +24,6 @@
   };
 
   services.nginx.enable = true;
-  services.nginx.recommendedGzipSettings = true;
-  services.nginx.recommendedProxySettings = true;
-  services.nginx.recommendedOptimisationSettings = true;
   services.nginx.virtualHosts."default" = {
     listen = [{ addr = "0.0.0.0"; port = 80; }];
     root = "/var/www";
