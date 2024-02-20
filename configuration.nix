@@ -2,7 +2,7 @@
 let 
 #  flakeryDomain = 
 # read /metdata/flakery-domain
-  flakeryDomain = builtins.readFile /metdata/flakery-domain;
+  flakeryDomain = builtins.readFile /metadata/flakery-domain;
 in
 {
   system.stateVersion = "23.05";
@@ -18,15 +18,11 @@ in
   # allow alice to run sudo without password
   security.sudo.wheelNeedsPassword = false;
 
-
   services.tailscale = {
     enable = true;
     authKeyFile = "/tsauthkey";
     extraUpFlags = [ "--ssh" "--hostname" "basic" ];
   };
-
-
-
 
   services.caddy = {
     enable = true;
