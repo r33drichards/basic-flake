@@ -23,7 +23,6 @@
     extraUpFlags = [ "--ssh" "--hostname" "basic" ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443];
 
 services.caddy = {
   enable = true;
