@@ -3,7 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    flakery.url = "github:getflakery/flakes";
+    flakery.url = "github:getflakery/flakesgit init
+git add .
+git commit -m "initial commit"";
   };
 
   outputs = { self, nixpkgs, flakery }: {
