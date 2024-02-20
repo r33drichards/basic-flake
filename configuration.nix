@@ -9,9 +9,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ ];
-    # set shell to zsh 
-    # passwordFile = "/persist/passwords/alice";
-  };
+ };
 
   # allow alice to run sudo without password
   security.sudo.wheelNeedsPassword = false;
@@ -24,18 +22,11 @@
   };
 
 
-services.caddy = {
-  enable = true;
-  virtualHosts."example.org".extraConfig = ''
-    encode gzip
-    file_server
-    root * ${
-      pkgs.runCommand "testdir" {} ''
-        mkdir "$out"
-        echo hello world > "$out/index.html"
-      ''
-    }
-  '';
-}; 
-networking.firewall.allowedTCPPorts = [ 80 443];
+  services.caddy = {
+    enable = true;
+    virtualHosts."localhost".extraConfig = ''
+      respond "Hello, world!"
+    ''
+  }; 
+  networking.firewall.allowedTCPPorts = [ 80 443];
 }
