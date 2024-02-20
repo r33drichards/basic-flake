@@ -8,5 +8,10 @@
   # Caddy service configuration.
   services.caddy = {
     enable = true;
+    extraConfig = ''
+      0.0.0.0
+      
+      respond "Hello, world!"
+    '';
   };
 }
