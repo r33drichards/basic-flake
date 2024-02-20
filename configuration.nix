@@ -8,11 +8,5 @@
   # Caddy service configuration.
   services.caddy = {
     enable = true;
-    # Configure Caddy to serve a simple "Hello, world!" page.
-    config = ''
-      :80 {
-        respond "Hello, world!"
-      }
-    '';
   };
 }
