@@ -27,7 +27,7 @@
   services.caddy = {
     enable = true;
     extraConfig =  ''
-    :80 {
+    localhost {
       respond "Hello world"
     }
     '';
