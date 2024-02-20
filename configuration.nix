@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  system.stateVersion = "23.05"; 
+  system.stateVersion = "23.05";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
@@ -20,16 +20,16 @@
   services.tailscale = {
     enable = true;
     authKeyFile = "/tsauthkey";
-    extraUpFlags = ["--ssh" "--hostname" "basic"];
+    extraUpFlags = [ "--ssh" "--hostname" "basic" ];
   };
 
-  # Caddy service configuration.
-  services.caddy = {
-    enable = true;
-    extraConfig =  ''
-    localhost {
-      respond "Hello world"
-    }
-    '';
+  services.nginx.enable = true;
+  services.nginx.recommendedGzipSettings = true;
+  services.nginx.recommendedProxySettings = true;
+  services.nginx.recommendedOptimisationSettings = true;
+  services.nginx.virtualHosts."default" = {
+    listen = [{ addr = "0.0.0.0"; port = 80; }];
+    root = "/var/www";
+    locations."/".index = "index.html";
   };
 }
