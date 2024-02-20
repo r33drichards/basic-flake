@@ -26,7 +26,7 @@
   # Caddy service configuration.
   services.caddy = {
     enable = true;
-    configFile = pkgs.writeTextDir "Caddyfile"  ''
+    extraConfig =  ''
     :80 {
       respond "Hello world"
     }
