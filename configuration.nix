@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
 let 
-#  flakeryDomain = 
-# read /metdata/flakery-domain
   flakeryDomain = builtins.readFile /metadata/flakery-domain;
 in
 {
